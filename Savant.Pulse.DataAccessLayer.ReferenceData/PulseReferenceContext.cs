@@ -17,6 +17,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData
         {
         }
 
+
         public virtual DbSet<Abocon> Abocon { get; set; }
         public virtual DbSet<Abotrn> Abotrn { get; set; }
         public virtual DbSet<Addrclen> Addrclen { get; set; }
@@ -208,8 +209,8 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=.\\SQLExpress;Database=Pulse_Reference;Trusted_Connection=True;");
+                optionsBuilder.UseMySql(
+                    @"Protocol=tcp;Node=WIZARD;Service=1360;Database=WI_DEV;User Id=PULSWIND; Password=PULSWIND;");
             }
         }
 
