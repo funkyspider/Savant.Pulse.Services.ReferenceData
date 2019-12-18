@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Savant.Pulse.Services.ReferenceData", "Savant.Pulse.Services.ReferenceData\Savant.Pulse.Services.ReferenceData.csproj", "{1331F3EE-05A8-4CFC-AEF0-077A5DF24F57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Savant.Pulse.WebApi.ReferenceData", "Savant.Pulse.Services.ReferenceData\Savant.Pulse.WebApi.ReferenceData.csproj", "{1331F3EE-05A8-4CFC-AEF0-077A5DF24F57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Savant.Pulse.DataAccessLayer.ReferenceData", "Savant.Pulse.DataAccessLayer.ReferenceData\Savant.Pulse.DataAccessLayer.ReferenceData.csproj", "{AD3ECC51-7CE2-44BF-804F-8A262FC8376D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Savant.Pulse.DataAccessLayer.ReferenceData", "Savant.Pulse.DataAccessLayer.ReferenceData\Savant.Pulse.DataAccessLayer.ReferenceData.csproj", "{AD3ECC51-7CE2-44BF-804F-8A262FC8376D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
