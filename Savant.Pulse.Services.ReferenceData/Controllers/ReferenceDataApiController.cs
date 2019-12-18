@@ -11,5 +11,6 @@ namespace Savant.Pulse.WebApi.ReferenceData.Controllers
     [ApiController]
     public class ReferenceDataApiController : ControllerBase
     {
+
     }
 }
