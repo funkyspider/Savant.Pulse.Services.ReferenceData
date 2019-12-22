@@ -63,16 +63,6 @@ namespace Pomelo.EntityFrameworkCore.MySql.Query.ExpressionVisitors.Internal
         {
             Check.NotNull(selectExpression, nameof(selectExpression));
 
-            if (selectExpression.Limit != null)
-            {
-                //Sql.AppendLine().Append("LIMIT ");
-
-                // TODO : MCS.   Mimer uses FETCH NEXT rather than LIMIT
-                Sql.AppendLine().Append("FETCH NEXT ");
-
-                Visit(selectExpression.Limit);
-            }
-
             if (selectExpression.Offset != null)
             {
                 if (selectExpression.Limit == null)
@@ -88,6 +78,17 @@ namespace Pomelo.EntityFrameworkCore.MySql.Query.ExpressionVisitors.Internal
 
                 Sql.Append(" OFFSET ");
                 Visit(selectExpression.Offset);
+            }
+
+            // Mimer : If OFFSET is applied the FETCH NEXT must come after the OFFSET keyword
+            if (selectExpression.Limit != null)
+            {
+                //Sql.AppendLine().Append("LIMIT ");
+
+                // TODO : MCS.   Mimer uses FETCH NEXT rather than LIMIT
+                Sql.AppendLine().Append("FETCH NEXT ");
+
+                Visit(selectExpression.Limit);
             }
         }
 

@@ -2,25 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNet.OData;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Savant.Pulse.DataAccessLayer.ReferenceData;
 using Savant.Pulse.DataAccessLayer.ReferenceData.Models;
 
-
-
 namespace Savant.Pulse.WebApi.ReferenceData.Controllers
 {
-    [Route("api/ReferenceData")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class ReferenceDataApiController : ControllerBase
+    public class SiteprmController : ODataController
     {
 
         private readonly PulseReferenceContext _context;
         private readonly ILogger<ReferenceDataApiController> _logger;
 
-        public ReferenceDataApiController(
+        public SiteprmController(
             PulseReferenceContext context,
             ILogger<ReferenceDataApiController> logger)
         {
@@ -28,12 +27,12 @@ namespace Savant.Pulse.WebApi.ReferenceData.Controllers
             _logger = logger;
         }
 
-
         [HttpGet]
-        public IEnumerable<Siteprm> Get()
+        [EnableQuery]
+        public IQueryable<Siteprm> Get()
         {
-            return _context.Siteprm;
+            var sp = _context.Siteprm;
+            return sp;
         }
-
     }
 }

@@ -40,8 +40,20 @@ namespace Pomelo.EntityFrameworkCore.MySql.Storage.Internal
         ///     This API supports the Entity Framework Core infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.
         /// </summary>
+//        public override string DelimitIdentifier(string identifier)
+//            => $"{EscapeIdentifier(Check.NotEmpty(identifier, nameof(identifier)))}"; // Interpolation okay; strings
+
+
+
+        /// <summary>
+        ///     This API supports the Entity Framework Core infrastructure and is not intended to be used
+        ///     directly from your code. This API may change or be removed in future releases.
+        /// </summary>
         public override string DelimitIdentifier(string identifier)
-            => $"{EscapeIdentifier(Check.NotEmpty(identifier, nameof(identifier)))}"; // Interpolation okay; strings
+            => $"\"{EscapeIdentifier(Check.NotEmpty(identifier, nameof(identifier)))}\""; // Interpolation okay; strings
+
+
+
         /// <summary>
         ///     This API supports the Entity Framework Core infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.
@@ -49,9 +61,10 @@ namespace Pomelo.EntityFrameworkCore.MySql.Storage.Internal
         public override void DelimitIdentifier(StringBuilder builder, string identifier)
         {
             Check.NotEmpty(identifier, nameof(identifier));
-            // builder.Append('`');   TODO : MCS
+            builder.Append('"');  
             EscapeIdentifier(builder, identifier);
-            // builder.Append('`');   TODO : MCS
+            builder.Append('"');
+
         }
 
 

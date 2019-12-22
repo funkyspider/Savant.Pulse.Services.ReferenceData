@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option csharp_namespace = "Savant.Pulse.grpc.ReferenceData";
+
+package ReferenceData;
+
+// The greeting service definition.
+service ReferenceData {
+  // Sends a greeting
+  rpc GetAbotrn (HelloRequest) returns (HelloReply);
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings.
+message HelloReply {
+  string message = 1;
+}
