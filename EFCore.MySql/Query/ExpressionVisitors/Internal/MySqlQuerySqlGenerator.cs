@@ -261,11 +261,13 @@ namespace Pomelo.EntityFrameworkCore.MySql.Query.ExpressionVisitors.Internal
         {
             Check.NotNull(mySqlCollateExpression, nameof(mySqlCollateExpression));
 
-            Sql.Append("CONVERT(");
+            // TODO : MCS
 
-            Visit(mySqlCollateExpression.ValueExpression);
+            //Sql.Append("CONVERT(");
 
-            Sql.Append($" USING {mySqlCollateExpression.Charset}) COLLATE {mySqlCollateExpression.Collation}");
+            //Visit(mySqlCollateExpression.ValueExpression);
+
+            //Sql.Append($" USING {mySqlCollateExpression.Charset}) COLLATE {mySqlCollateExpression.Collation}");
 
             return mySqlCollateExpression;
         }

@@ -81,6 +81,13 @@ namespace Pomelo.EntityFrameworkCore.MySql.Storage.Internal
             // fragmentation by setting lots of different Size values otherwise always set to
             // -1 (unbounded) to avoid size inference.
 
+            if (parameter.ParameterName.StartsWith("CAST (:"))
+            {
+                parameter.ParameterName = parameter.ParameterName
+                    .Replace("CAST (:", ":")
+                    .Replace(" as char(36))","");
+            }
+
             var value = parameter.Value;
             int? length;
 
@@ -96,7 +103,7 @@ namespace Pomelo.EntityFrameworkCore.MySql.Storage.Internal
             {
                 length = null;
             }
-            
+
             parameter.Value = value;
             parameter.Size = value == null || value == DBNull.Value || length != null && length <= _maxSpecificSize
                 ? _maxSpecificSize

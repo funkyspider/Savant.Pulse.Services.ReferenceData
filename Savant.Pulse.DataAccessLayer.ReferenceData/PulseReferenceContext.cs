@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Console;
 using Savant.Pulse.DataAccessLayer.ReferenceData.Models;
 
 
@@ -8,6 +10,10 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData
 {
     public partial class PulseReferenceContext : DbContext
     {
+
+        public static readonly ILoggerFactory MyLoggerFactory
+            = LoggerFactory.Create(builder => { builder.AddConsole(); });
+
         public PulseReferenceContext()
         {
         }
@@ -210,7 +216,17 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseMySql(
-                    @"Protocol=tcp;Node=WIZARD;Service=1360;Database=WI_DEV;User Id=PULSWIND; Password=PULSWIND;");
+                        @"Protocol=tcp;Node=WIZARD;Service=1360;Database=WI_DEV;User Id=PULSWIND; Password=PULSWIND;")
+                    .EnableDetailedErrors()
+                    .EnableSensitiveDataLogging()
+                    .UseLoggerFactory(MyLoggerFactory);
+
+                //optionsBuilder.UseSqlServer(
+                //        @"server =.\SQLEXPRESS; database = Pulse_Reference; trusted_connection = true; ")
+                //    .EnableDetailedErrors()
+                //    .EnableSensitiveDataLogging()
+                //    .UseLoggerFactory(MyLoggerFactory);
+
             }
         }
 

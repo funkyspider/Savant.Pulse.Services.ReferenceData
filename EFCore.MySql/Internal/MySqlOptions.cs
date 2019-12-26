@@ -23,10 +23,14 @@ namespace Pomelo.EntityFrameworkCore.MySql.Internal
 
             // We do not use the MySQL versions's default, but explicitly use `utf8mb4`
             // if not changed by the user.
-            CharSet = CharSet.Utf8Mb4;
+            // TODO :MCS
+            //CharSet = CharSet.Utf8Mb4;
+            CharSet = CharSet.Utf8;
 
             // NCHAR and NVARCHAR are prefdefined by MySQL.
-            NationalCharSet = CharSet.Utf8Mb3;
+            // TODO :MCS
+            //NationalCharSet = CharSet.Utf8Mb3;
+            NationalCharSet = CharSet.Utf8;
 
             ReplaceLineBreaksWithCharFunction = true;
             DefaultDataTypeMappings = new MySqlDefaultDataTypeMappings();
@@ -82,7 +86,7 @@ namespace Pomelo.EntityFrameworkCore.MySql.Internal
                         nameof(DbContextOptionsBuilder.UseInternalServiceProvider)));
             }
 
-            if (!Equals(CharSet, mySqlOptions.CharSet ?? CharSet.Utf8Mb4))
+            if (!Equals(CharSet, mySqlOptions.CharSet ?? CharSet.Utf8))
             {
                 throw new InvalidOperationException(
                     CoreStrings.SingletonOptionChanged(

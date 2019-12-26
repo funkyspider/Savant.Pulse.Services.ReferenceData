@@ -488,11 +488,18 @@ namespace Pomelo.EntityFrameworkCore.MySql.Query.ExpressionTranslators.Internal
 
         private SqlExpression Utf8Bin(SqlExpression value)
         {
+
             return _sqlExpressionFactory.Collate(
                 value,
-                "utf8mb4",
-                "utf8mb4_bin"
-            );
+                "utf8",
+                "utf8"
+
+// TODO : MCS
+//return _sqlExpressionFactory.Collate(
+//    value,
+//    "utf8mb4",
+//    "utf8mb4_bin"
+);
         }
 
         private SqlExpression CharLength(SqlExpression value)

@@ -33,7 +33,7 @@ namespace Pomelo.EntityFrameworkCore.MySql.Storage.Internal
 
             var initialLength = builder.Length;
             builder.Append(identifier);
-            builder.Replace("`", "``", initialLength, identifier.Length);
+            builder.Replace("\"", "", initialLength, identifier.Length);
         }
 
         /// <summary>
@@ -76,9 +76,24 @@ namespace Pomelo.EntityFrameworkCore.MySql.Storage.Internal
         ///     A valid name based on the candidate name.
         /// </returns>
         public override string GenerateParameterName(string name)
-            => name.StartsWith(":", StringComparison.Ordinal)
-                ? name
-                : ":" + name;
+        {
+            string p = null;
+
+            if (name.StartsWith(":", StringComparison.Ordinal))
+            {
+                p = name;
+            }
+            else
+            {
+                p = ":" + name;
+            }
+
+            if (p.StartsWith(":__TypedProperty_"))
+            {
+                p = $"CAST ({p} as char(36))";
+            }
+            return p;
+        }
 
         /// <summary>
         ///     Writes a valid parameter name for the given candidate name.
