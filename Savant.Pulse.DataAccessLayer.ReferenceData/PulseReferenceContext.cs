@@ -215,17 +215,17 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData
         {
             if (!optionsBuilder.IsConfigured)
             {
-                //optionsBuilder.UseMySql(
-                //        @"Protocol=tcp;Node=WIZARD;Service=1360;Database=WI_DEV;User Id=PULSWIND; Password=PULSWIND;")
-                //    .EnableDetailedErrors()
-                //    .EnableSensitiveDataLogging()
-                //    .UseLoggerFactory(MyLoggerFactory);
-
-                optionsBuilder.UseSqlServer(
-                        @"server =.\SQLEXPRESS; database = Pulse_Reference; trusted_connection = true; ")
+                optionsBuilder.UseMySql(
+                        @"Protocol=tcp;Node=WIZARD;Service=1360;Database=WI_DEV;User Id=PULSWIND; Password=PULSWIND;")
                     .EnableDetailedErrors()
                     .EnableSensitiveDataLogging()
                     .UseLoggerFactory(MyLoggerFactory);
+
+                //optionsBuilder.UseSqlServer(
+                //        @"server =.\SQLEXPRESS; database = Pulse_Reference; trusted_connection = true; ")
+                //    .EnableDetailedErrors()
+                //    .EnableSensitiveDataLogging()
+                //    .UseLoggerFactory(MyLoggerFactory);
 
             }
         }

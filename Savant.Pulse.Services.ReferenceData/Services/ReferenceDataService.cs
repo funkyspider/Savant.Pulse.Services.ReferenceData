@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Savant.Pulse.DataAccessLayer.ReferenceData;
+using Savant.Pulse.DataAccessLayer.ReferenceData.Models;
 using Savant.Pulse.WebApi.ReferenceData.Controllers;
 
 namespace Savant.Pulse.WebApi.ReferenceData.Services
@@ -20,9 +21,28 @@ namespace Savant.Pulse.WebApi.ReferenceData.Services
             _logger = logger;
         }
 
-        public string GetSiteprmByKey(string siteCode, string key1, string key2)
+        public List<Siteprm> GetSiteprmByKey(string siteCode, string key1, string key2)
         {
-            throw new NotImplementedException();
+
+            var predicate = PredicateBuilder.True<Siteprm>();
+
+            if (!string.IsNullOrEmpty(siteCode))
+            {
+            //    predicate = predicate.And(i => i.Sitcd.ToUpper() == siteCode.ToUpper());
+                predicate = predicate.And(i => i.Sitcd.Equals(siteCode) );
+            }
+
+            if (!string.IsNullOrEmpty(key1))
+            {
+                predicate = predicate.And(i => i.Key1 == key1);
+            }
+
+            if (!string.IsNullOrEmpty(key2))
+            {
+                predicate = predicate.And(i => i.Key2 == key2);
+            }
+
+            return _context.Siteprm.Where(predicate).ToList();
         }
     }
 }

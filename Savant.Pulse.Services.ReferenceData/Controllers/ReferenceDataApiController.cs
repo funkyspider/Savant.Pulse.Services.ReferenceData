@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,7 +22,7 @@ namespace Savant.Pulse.WebApi.ReferenceData.Controllers
         public string ClassName { get; set; }
         public string MethodName { get; set; }
 
-        public object[] Parameters { get; set; }
+        public string[] Parameters { get; set; }
     }
 
 
@@ -49,37 +51,50 @@ namespace Savant.Pulse.WebApi.ReferenceData.Controllers
 
 
         [HttpGet]
-        public IEnumerable<Siteprm> Get()
+        public IEnumerable<Object> Get()
         {
             Request r = new Request
             {
                 ClassName = "Savant.Pulse.WebApi.ReferenceData.Services.ReferenceDataService",
                 MethodName = "GetSiteprmByKey",
-                Parameters = new object[] {"**","AAA","BBB" }
-
+                Parameters = new string[] {"**", "GENNARO", "" }
             };
 
             var svc = ActivatorUtilities.CreateInstance(_serviceProvider, Type.GetType(r.ClassName));
 
-            //string scenario1 = "Savant.Pulse.WebApi.ReferenceData.Services.ReferenceDataService";
-            //Type theType = this.GetType().Assembly.GetType(scenario1);
-            //var theInstance = (IReferenceDataService)ActivatorUtilities.CreateInstance(theType);
+            Type thisType = svc.GetType();
+            MethodInfo theMethod = thisType.GetMethod(r.MethodName);
+            var s = (theMethod.Invoke(svc,r.Parameters));
+
+            return (IEnumerable <Object>)(s);
+
+        }
 
 
-            //Type typeToCall = Type.GetType("Savant.Pulse.WebApi.ReferenceData.Services" + "." + "IReferenceDataService" + "," + "Savant.Pulse.WebApi.ReferenceData");
+        [HttpPost]
+        public string Generic([FromBody]Request r)
+        {
+            
+            //     {
+        //    "ClassName": "Savant.Pulse.WebApi.ReferenceData.Services.ReferenceDataService",
+        //    "MethodName": "GetSiteprmByKey",
+        //    "Parameters": [
+        //    "",
+        //    "GENNARO",
+        //    ""
+        //        ]
+        //}
 
-            //Type me = Type.GetType(this.ToString());
 
-            //me.FindMembers(r.ClassName);
+
+    var svc = ActivatorUtilities.CreateInstance(_serviceProvider, Type.GetType(r.ClassName));
 
             Type thisType = svc.GetType();
             MethodInfo theMethod = thisType.GetMethod(r.MethodName);
-            theMethod.Invoke(svc,r.Parameters);
+            var s = (theMethod.Invoke(svc, r.Parameters));
 
-
-         //   _referenceDataService.GetSiteprmByKey(null, null, null);
-
-            return _context.Siteprm;
+            string a = JsonSerializer.Serialize(s);
+            return a;
         }
 
     }
