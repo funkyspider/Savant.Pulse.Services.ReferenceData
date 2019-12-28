@@ -14,6 +14,7 @@ using Savant.Pulse.DataAccessLayer.ReferenceData;
 using Microsoft.AspNet.OData.Builder;
 using Microsoft.AspNet.OData.Extensions;
 using Savant.Pulse.DataAccessLayer.ReferenceData.Models;
+using Savant.Pulse.WebApi.ReferenceData.Services;
 
 
 namespace Savant.Pulse.Services.ReferenceData
@@ -44,6 +45,8 @@ namespace Savant.Pulse.Services.ReferenceData
                 config.SetMinimumLevel(LogLevel.Information);
             });
             services.AddControllers();
+
+            services.AddTransient<IReferenceDataService, ReferenceDataService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
