@@ -57,41 +57,47 @@ namespace Savant.Pulse.WebApi.ReferenceData.Controllers
             {
                 ClassName = "Savant.Pulse.WebApi.ReferenceData.Services.ReferenceDataService",
                 MethodName = "GetSiteprmByKey",
-                Parameters = new string[] {"**", "GENNARO", "" }
+                Parameters = new string[] { "**", "GENNARO", "" }
             };
 
             var svc = ActivatorUtilities.CreateInstance(_serviceProvider, Type.GetType(r.ClassName));
 
             Type thisType = svc.GetType();
             MethodInfo theMethod = thisType.GetMethod(r.MethodName);
-            var s = (theMethod.Invoke(svc,r.Parameters));
+            var s = (theMethod.Invoke(svc, r.Parameters));
 
-            return (IEnumerable <Object>)(s);
+            return (IEnumerable<Object>)(s);
 
         }
 
 
         [HttpPost]
-        public string Generic([FromBody]Request r)
+        public async Task<string> Generic([FromBody]Request r)
         {
-            
+
             //     {
-        //    "ClassName": "Savant.Pulse.WebApi.ReferenceData.Services.ReferenceDataService",
-        //    "MethodName": "GetSiteprmByKey",
-        //    "Parameters": [
-        //    "",
-        //    "GENNARO",
-        //    ""
-        //        ]
-        //}
+            //    "ClassName": "Savant.Pulse.WebApi.ReferenceData.Services.ReferenceDataService",
+            //    "MethodName": "GetSiteprmByKey",
+            //    "Parameters": [
+            //    "",
+            //    "GENNARO",
+            //    ""
+            //        ]
+            //}
+
+            var classInstance = ActivatorUtilities.CreateInstance(_serviceProvider, Type.GetType(r.ClassName));
+
+            Type type = classInstance.GetType();
+            MethodInfo method = type.GetMethod(r.MethodName);
+
+            var task = (Task)method.Invoke(classInstance, r.Parameters);
+            await task.ConfigureAwait(false);
+            
+            var taskResult = task.GetType().GetProperty("Result");
+            var s = taskResult.GetValue(task);
 
 
-
-    var svc = ActivatorUtilities.CreateInstance(_serviceProvider, Type.GetType(r.ClassName));
-
-            Type thisType = svc.GetType();
-            MethodInfo theMethod = thisType.GetMethod(r.MethodName);
-            var s = (theMethod.Invoke(svc, r.Parameters));
+            //var s = method.Invoke(classInstance, r.Parameters);
 
             string a = JsonSerializer.Serialize(s);
             return a;
