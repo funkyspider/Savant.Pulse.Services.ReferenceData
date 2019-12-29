@@ -85,14 +85,20 @@ namespace Savant.Pulse.WebApi.ReferenceData.Controllers
             //        ]
             //}
 
+            // Create instance of class using Dependency Injection provider to inject constructor params into created class instance
             var classInstance = ActivatorUtilities.CreateInstance(_serviceProvider, Type.GetType(r.ClassName));
 
+            // Get class type
             Type type = classInstance.GetType();
+            
+            // Get reference to method using input parameter
             MethodInfo method = type.GetMethod(r.MethodName);
 
+            // Create a task and run the class.method with the parameters
             var task = (Task)method.Invoke(classInstance, r.Parameters);
             await task.ConfigureAwait(false);
             
+            // Get weird task result and get the method response value
             var taskResult = task.GetType().GetProperty("Result");
             var s = taskResult.GetValue(task);
 
