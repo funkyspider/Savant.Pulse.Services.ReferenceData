@@ -37,7 +37,7 @@ namespace Serialize.Linq.Examples.RestClient
 
             _loggingHandler = new LoggingHandler(new HttpClientHandler());
 
-            _httpClient = new HttpClient(_loggingHandler) { BaseAddress = new Uri("http://localhost:5000/") };
+            _httpClient = new HttpClient(_loggingHandler) { BaseAddress = new Uri("http://localhost:44305/") };
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(_mediaTypeJson);
 

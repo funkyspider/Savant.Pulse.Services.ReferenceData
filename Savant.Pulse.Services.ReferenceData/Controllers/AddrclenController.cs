@@ -13,20 +13,21 @@ namespace Savant.Pulse.WebApi.ReferenceData.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SiteprmController : BaseOdataController
+    public class AddrclenController : BaseOdataController
     {
 
-        public SiteprmController(
+        public AddrclenController(
             PulseReferenceContext context,
             ILogger<ReferenceDataApiController> logger) : base(context, logger)
         {
         }
 
+
         [HttpGet]
         [EnableQuery]
-        public IQueryable<Siteprm> Get()
+        public IQueryable<Addrclen> Get()
         {
-            var sp = _context.Siteprm;
+            var sp = _context.Addrclen;
             return sp;
         }
     }

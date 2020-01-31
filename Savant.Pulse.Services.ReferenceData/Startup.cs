@@ -34,9 +34,9 @@ namespace Savant.Pulse.Services.ReferenceData
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddMvc(option => option.EnableEndpointRouting = false);
-
+            services.AddMvc(option => option.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddOData();
+
 
             services.AddDbContext<PulseReferenceContext>();
             services.AddLogging(config =>
@@ -52,8 +52,7 @@ namespace Savant.Pulse.Services.ReferenceData
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            
-            
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -61,8 +60,7 @@ namespace Savant.Pulse.Services.ReferenceData
 
 
             var builder = new ODataConventionModelBuilder(app.ApplicationServices);
-
-            builder.EntitySet<Siteprm>("Siteprm");
+            ConfigureOdataEntities(builder);
 
             app.UseMvc(routeBuilder =>
             {
@@ -75,13 +73,22 @@ namespace Savant.Pulse.Services.ReferenceData
                 routeBuilder.EnableDependencyInjection();
             });
 
-            app.UseHttpsRedirection();
-            app.UseRouting();
-            app.UseAuthorization();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            //            app.UseHttpsRedirection();
+            //            app.UseRouting();
+            //            app.UseAuthorization();
+            //            app.UseEndpoints(endpoints =>
+            //            {
+            //                endpoints.MapControllers();
+            //            });
+        }
+
+        private static void ConfigureOdataEntities(ODataConventionModelBuilder builder)
+        {
+            builder.EntitySet<Siteprm>("Siteprm");
+            builder.EntitySet<Abocon>("Abocon");
+            builder.EntitySet<Abotrn>("Abotrn");
+            builder.EntitySet<Addrclen>("Addrclen");
+
         }
     }
 }

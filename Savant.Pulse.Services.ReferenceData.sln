@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Savant.Pulse.DataModels.Ref
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Savant.Pulse.ConsoleTest.ReferenceData", "Savant.Pulse.ConsoleTest.ReferenceData\Savant.Pulse.ConsoleTest.ReferenceData.csproj", "{941F8375-A8D8-4772-9C0F-C33FEF282261}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Savant.Pulse.Utilities.GenerateRepos", "Savant.Pulse.Utilities.GenerateRepos\Savant.Pulse.Utilities.GenerateRepos.csproj", "{6A5CA2E9-CBCC-460E-8232-B5E93F6B82C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Savant.Pulse.Utilities.GenerateRepos", "Savant.Pulse.Utilities.GenerateRepos\Savant.Pulse.Utilities.GenerateRepos.csproj", "{6A5CA2E9-CBCC-460E-8232-B5E93F6B82C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
