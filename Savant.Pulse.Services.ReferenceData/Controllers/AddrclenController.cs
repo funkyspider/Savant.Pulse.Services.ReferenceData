@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,12 +16,12 @@ namespace Savant.Pulse.WebApi.ReferenceData.Controllers
     public class AddrclenController : BaseOdataController
     {
 
+
         public AddrclenController(
             PulseReferenceContext context,
-            ILogger<ReferenceDataApiController> logger) : base(context, logger)
+            ILogger<ReferenceDataApiController> logger) : base(context,logger)
         {
         }
-
 
         [HttpGet]
         [EnableQuery]

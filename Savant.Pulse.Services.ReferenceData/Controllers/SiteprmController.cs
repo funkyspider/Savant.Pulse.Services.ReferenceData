@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,9 +16,10 @@ namespace Savant.Pulse.WebApi.ReferenceData.Controllers
     public class SiteprmController : BaseOdataController
     {
 
+
         public SiteprmController(
             PulseReferenceContext context,
-            ILogger<ReferenceDataApiController> logger) : base(context, logger)
+            ILogger<ReferenceDataApiController> logger) : base(context,logger)
         {
         }
 
