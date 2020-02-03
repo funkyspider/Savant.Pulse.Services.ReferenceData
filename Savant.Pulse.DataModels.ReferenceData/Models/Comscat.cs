@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Comscat
     {
+        [Key, Column(Order = 0)] 
         public string Comcatcd { get; set; }
         public string Comcatds { get; set; }
         public string Inuse { get; set; }

@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Panref
     {
+        [Key, Column(Order = 0)] 
         public string Code { get; set; }
         public string Data { get; set; }
     }

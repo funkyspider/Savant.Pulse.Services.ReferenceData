@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Quename
     {
+        [Key, Column(Order = 0)]
         public string Quename1 { get; set; }
         public string Server { get; set; }
         public int? Joblimit { get; set; }

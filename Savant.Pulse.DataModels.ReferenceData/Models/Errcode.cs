@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Errcode
     {
+        [Key, Column(Order = 0)] 
         public string Errcode1 { get; set; }
         public string Errmstyp { get; set; }
         public string Beepset { get; set; }

@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Awardcon
     {
+        [Key, Column(Order = 0)] 
         public string Awrdcond { get; set; }
         public string Awrdinst { get; set; }
         public string Condescl { get; set; }

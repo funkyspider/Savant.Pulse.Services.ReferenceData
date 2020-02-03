@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Placegrid
     {
+        [Key, Column(Order = 0)] 
         public int Mapseq { get; set; }
         public string KmRef { get; set; }
         public string DefNam { get; set; }

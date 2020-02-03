@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Messhelp
     {
+        [Key, Column(Order = 0)] 
         public int Msgno { get; set; }
         public string Desc { get; set; }
         public string Windesc { get; set; }

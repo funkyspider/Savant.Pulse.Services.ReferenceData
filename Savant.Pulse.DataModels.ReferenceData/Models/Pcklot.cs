@@ -7,9 +7,13 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Pcklot
     {
+        [Key, Column(Order = 0)] 
         public string Lotno { get; set; }
+        [Key, Column(Order = 1)] 
         public string Pckcod { get; set; }
+        [Key, Column(Order = 2)] 
         public string Datrec { get; set; }
+        [Key, Column(Order = 3)] 
         public string Timrec { get; set; }
         public string Sitcd { get; set; }
         public string Expdat { get; set; }

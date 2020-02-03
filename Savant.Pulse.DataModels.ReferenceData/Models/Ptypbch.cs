@@ -7,7 +7,9 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Ptypbch
     {
+        [Key, Column(Order = 0)] 
         public string Pckcod { get; set; }
+        [Key, Column(Order = 1)] 
         public string Bchcd { get; set; }
         public string Reslt { get; set; }
         public string Reseval { get; set; }

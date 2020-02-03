@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Donrffrm
     {
+        [Key, Column(Order = 0)] 
         public string Formatcd { get; set; }
         public string Font { get; set; }
         public int? Textsize { get; set; }

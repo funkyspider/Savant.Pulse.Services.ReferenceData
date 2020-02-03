@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Mrgerrcd
     {
+        [Key, Column(Order = 0)] 
         public string Mrgchkcd { get; set; }
         public string Mrgchkds { get; set; }
     }

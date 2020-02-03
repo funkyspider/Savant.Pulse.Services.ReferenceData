@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Dselsrce
     {
+        [Key, Column(Order = 0)] 
         public string Dnkeywrd { get; set; }
         public string Menutext { get; set; }
         public string Querytyp { get; set; }

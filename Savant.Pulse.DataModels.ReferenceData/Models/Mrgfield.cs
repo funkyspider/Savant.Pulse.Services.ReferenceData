@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Mrgfield
     {
+        [Key, Column(Order = 0)] 
         public string Donfield { get; set; }
         public string Fielddsc { get; set; }
         public string Inuse { get; set; }

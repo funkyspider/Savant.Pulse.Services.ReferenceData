@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Donrftyp
     {
+        [Key, Column(Order = 0)] 
         public string Rftypcd { get; set; }
         public string Rftypds { get; set; }
         public int? Ordnum { get; set; }

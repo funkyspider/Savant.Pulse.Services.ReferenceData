@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Nonsescm
     {
+        [Key, Column(Order = 0)] 
         public string Commscd { get; set; }
         public string Microreq { get; set; }
         public int? Microdur { get; set; }

@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Ethorig
     {
+        [Key, Column(Order = 0)] 
         public string Ethcd { get; set; }
         public string Ethdesc { get; set; }
         public string Inuse { get; set; }

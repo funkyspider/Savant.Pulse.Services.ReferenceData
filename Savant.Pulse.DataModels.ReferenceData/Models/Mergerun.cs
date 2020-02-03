@@ -7,8 +7,11 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Mergerun
     {
+        [Key, Column(Order = 0)] 
         public string Rundate { get; set; }
+        [Key, Column(Order = 1)] 
         public string Mrgrunno { get; set; }
+        [Key, Column(Order = 2)] 
         public string Cntcd { get; set; }
         public string Starttim { get; set; }
         public string Endtim { get; set; }

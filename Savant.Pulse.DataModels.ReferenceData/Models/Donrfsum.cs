@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Donrfsum
     {
+        [Key, Column(Order = 0)] 
         public string Summcode { get; set; }
         public string Summtext { get; set; }
         public string Notfyref { get; set; }

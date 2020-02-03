@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Phonekey
     {
+        [Key, Column(Order = 0)] 
         public string Keyword { get; set; }
         public string Smsavail { get; set; }
         public string Telavail { get; set; }

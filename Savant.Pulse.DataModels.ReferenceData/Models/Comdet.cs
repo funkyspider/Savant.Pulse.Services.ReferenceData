@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Comdet
     {
+        [Key, Column(Order = 0)] 
         public string Commscd { get; set; }
         public string Commsds { get; set; }
         public string Commsdsw { get; set; }

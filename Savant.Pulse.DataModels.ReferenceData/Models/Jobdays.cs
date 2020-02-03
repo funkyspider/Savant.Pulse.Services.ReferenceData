@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Jobdays
     {
+        [Key, Column(Order = 0)] 
         public string Jobid { get; set; }
         public string Mon { get; set; }
         public string Tue { get; set; }

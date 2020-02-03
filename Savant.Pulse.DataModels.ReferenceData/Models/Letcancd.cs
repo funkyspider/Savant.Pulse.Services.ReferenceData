@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Letcancd
     {
+        [Key, Column(Order = 0)] 
         public string Letcancd1 { get; set; }
         public string Candesc { get; set; }
         public string Descript { get; set; }

@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Pulsedb
     {
+        [Key, Column(Order = 0)] 
         public string Dbnamecd { get; set; }
         public string Dbnameds { get; set; }
         public string Dbtype { get; set; }

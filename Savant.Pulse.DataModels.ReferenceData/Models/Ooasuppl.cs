@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Ooasuppl
     {
+        [Key, Column(Order = 0)] 
         public string Ctrycode { get; set; }
         public string Pstmess1 { get; set; }
         public string Pstmess2 { get; set; }

@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Mthsite
     {
+        [Key, Column(Order = 0)] 
         public string Sitcd { get; set; }
         public string Title { get; set; }
         public string Addr1 { get; set; }

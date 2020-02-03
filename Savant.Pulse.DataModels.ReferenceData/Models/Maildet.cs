@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Maildet
     {
+        [Key, Column(Order = 0)] 
         public string Doccode { get; set; }
         public string Docdesc { get; set; }
         public string Msgvalid { get; set; }

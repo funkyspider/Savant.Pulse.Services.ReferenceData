@@ -7,8 +7,11 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Dseltmrl
     {
+        [Key, Column(Order = 0)] 
         public string Dnsltmcd { get; set; }
+        [Key, Column(Order = 1)] 
         public int Dnslrule { get; set; }
+        [Key, Column(Order = 2)] 
         public string Dnkeywrd { get; set; }
         public string Selcon1 { get; set; }
         public string Selval1 { get; set; }

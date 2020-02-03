@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Prodct
     {
+        [Key, Column(Order = 0)] 
         public string Prdcd { get; set; }
         public string Inuse { get; set; }
         public string Prdsl { get; set; }

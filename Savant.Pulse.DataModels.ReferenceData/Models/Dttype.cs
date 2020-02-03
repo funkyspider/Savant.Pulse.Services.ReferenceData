@@ -7,7 +7,9 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Dttype
     {
+        [Key, Column(Order = 0)] 
         public string Dtsyscd { get; set; }
+        [Key, Column(Order = 1)] 
         public string Dtincty { get; set; }
         public string Inctyds { get; set; }
         public string Inuse { get; set; }

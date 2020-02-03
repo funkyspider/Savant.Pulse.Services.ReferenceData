@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Qjobs
     {
+        [Key, Column(Order = 0)] 
         public string Entryid { get; set; }
         public string Jobid { get; set; }
         public DateTime? Jobstart { get; set; }

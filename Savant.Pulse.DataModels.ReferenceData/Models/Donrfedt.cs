@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Donrfedt
     {
+        [Key, Column(Order = 0)] 
         public string Edtcode { get; set; }
         public string Edttype { get; set; }
         public string Edtname { get; set; }
