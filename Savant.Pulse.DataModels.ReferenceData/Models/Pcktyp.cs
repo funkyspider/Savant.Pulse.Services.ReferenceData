@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Pcktyp
     {
+        [Key, Column(Order = 0)] 
         public string Pckcod { get; set; }
         public string Pckdes { get; set; }
         public string Inuse { get; set; }

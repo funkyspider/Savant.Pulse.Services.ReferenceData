@@ -31,15 +31,12 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData
         public virtual DbSet<Addtvref> Addtvref { get; set; }
         public virtual DbSet<Adhoctpl> Adhoctpl { get; set; }
         public virtual DbSet<Archive> Archive { get; set; }
-        public virtual DbSet<Arcmodes> Arcmodes { get; set; }
         public virtual DbSet<Arcref> Arcref { get; set; }
-        public virtual DbSet<Arcvmode> Arcvmode { get; set; }
         public virtual DbSet<Attdesc> Attdesc { get; set; }
         public virtual DbSet<Audevent> Audevent { get; set; }
         public virtual DbSet<Awardcon> Awardcon { get; set; }
         public virtual DbSet<Awardpre> Awardpre { get; set; }
         public virtual DbSet<Bankhols> Bankhols { get; set; }
-        public virtual DbSet<Bchrprio> Bchrprio { get; set; }
         public virtual DbSet<Bctflag> Bctflag { get; set; }
         public virtual DbSet<Bldchrpr> Bldchrpr { get; set; }
         public virtual DbSet<Booklimt> Booklimt { get; set; }
@@ -99,8 +96,6 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData
         public virtual DbSet<Isoctry> Isoctry { get; set; }
         public virtual DbSet<Jobdays> Jobdays { get; set; }
         public virtual DbSet<Jobname> Jobname { get; set; }
-        public virtual DbSet<L62ref> L62ref { get; set; }
-        public virtual DbSet<L63ref> L63ref { get; set; }
         public virtual DbSet<Labelfit> Labelfit { get; set; }
         public virtual DbSet<Lbmrgrle> Lbmrgrle { get; set; }
         public virtual DbSet<Letcancd> Letcancd { get; set; }
@@ -132,7 +127,6 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData
         public virtual DbSet<Nmresdsp> Nmresdsp { get; set; }
         public virtual DbSet<Nonsescm> Nonsescm { get; set; }
         public virtual DbSet<Ooasuppl> Ooasuppl { get; set; }
-        public virtual DbSet<Osdate> Osdate { get; set; }
         public virtual DbSet<Panref> Panref { get; set; }
         public virtual DbSet<Pcklot> Pcklot { get; set; }
         public virtual DbSet<Pcktyp> Pcktyp { get; set; }
@@ -206,9 +200,6 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData
         public virtual DbSet<Vennowrk> Vennowrk { get; set; }
         public virtual DbSet<Vnctyprq> Vnctyprq { get; set; }
         public virtual DbSet<Waitprm> Waitprm { get; set; }
-        public virtual DbSet<Weightbg> Weightbg { get; set; }
-        public virtual DbSet<Weightph> Weightph { get; set; }
-        public virtual DbSet<Weighttm> Weighttm { get; set; }
         public virtual DbSet<Wrdmmdef> Wrdmmdef { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -431,39 +422,6 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData
                     .IsFixedLength();
             });
 
-            modelBuilder.Entity<Arcmodes>(entity =>
-            {
-                entity.HasKey(e => new { e.Dayno, e.Strttime });
-
-                entity.ToTable("ARCMODES");
-
-                entity.Property(e => e.Dayno).HasColumnName("DAYNO");
-
-                entity.Property(e => e.Strttime)
-                    .HasColumnName("STRTTIME")
-                    .HasMaxLength(4)
-                    .IsFixedLength();
-
-                entity.Property(e => e.Archmode)
-                    .HasColumnName("ARCHMODE")
-                    .HasMaxLength(1)
-                    .IsFixedLength();
-
-                entity.Property(e => e.Archreas)
-                    .HasColumnName("ARCHREAS")
-                    .HasMaxLength(50)
-                    .IsFixedLength();
-
-                entity.Property(e => e.Arcmnote)
-                    .HasColumnName("ARCMNOTE")
-                    .HasMaxLength(500)
-                    .IsFixedLength();
-
-                entity.Property(e => e.Stoptime)
-                    .HasColumnName("STOPTIME")
-                    .HasMaxLength(4)
-                    .IsFixedLength();
-            });
 
             modelBuilder.Entity<Arcref>(entity =>
             {
@@ -507,22 +465,6 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData
                     .IsFixedLength();
             });
 
-            modelBuilder.Entity<Arcvmode>(entity =>
-            {
-                entity.HasKey(e => e.Archmode);
-
-                entity.ToTable("ARCVMODE");
-
-                entity.Property(e => e.Archmode)
-                    .HasColumnName("ARCHMODE")
-                    .HasMaxLength(1)
-                    .IsFixedLength();
-
-                entity.Property(e => e.Arcmnote)
-                    .HasColumnName("ARCMNOTE")
-                    .HasMaxLength(500)
-                    .IsFixedLength();
-            });
 
             modelBuilder.Entity<Attdesc>(entity =>
             {
@@ -655,24 +597,6 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData
                     .IsFixedLength();
             });
 
-            modelBuilder.Entity<Bchrprio>(entity =>
-            {
-                entity.HasKey(e => new { e.Userid, e.Bchcd });
-
-                entity.ToTable("BCHRPRIO");
-
-                entity.Property(e => e.Userid)
-                    .HasColumnName("USERID")
-                    .HasMaxLength(8)
-                    .IsFixedLength();
-
-                entity.Property(e => e.Bchcd)
-                    .HasColumnName("BCHCD")
-                    .HasMaxLength(5)
-                    .IsFixedLength();
-
-                entity.Property(e => e.Bldprio).HasColumnName("BLDPRIO");
-            });
 
             modelBuilder.Entity<Bctflag>(entity =>
             {
@@ -2582,43 +2506,6 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<L62ref>(entity =>
-            {
-                entity.HasKey(e => new { e.Sitcd, e.Bchcd });
-
-                entity.ToTable("L62REF");
-
-                entity.Property(e => e.Sitcd)
-                    .HasColumnName("SITCD")
-                    .HasMaxLength(2)
-                    .IsFixedLength();
-
-                entity.Property(e => e.Bchcd)
-                    .HasColumnName("BCHCD")
-                    .HasMaxLength(5)
-                    .IsFixedLength();
-
-                entity.Property(e => e.Column).HasColumnName("COLUMN");
-
-                entity.Property(e => e.Prlabel)
-                    .HasColumnName("PRLABEL")
-                    .HasMaxLength(1)
-                    .IsFixedLength();
-
-                entity.Property(e => e.Row).HasColumnName("ROW");
-            });
-
-            modelBuilder.Entity<L63ref>(entity =>
-            {
-                entity.HasKey(e => e.Prdty);
-
-                entity.ToTable("L63REF");
-
-                entity.Property(e => e.Prdty)
-                    .HasColumnName("PRDTY")
-                    .HasMaxLength(2)
-                    .IsFixedLength();
-            });
 
             modelBuilder.Entity<Labelfit>(entity =>
             {
@@ -3526,19 +3413,6 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData
                     .IsFixedLength();
             });
 
-            modelBuilder.Entity<Osdate>(entity =>
-            {
-                entity.HasKey(e => e.Pulsdate);
-
-                entity.ToTable("OSDATE");
-
-                entity.Property(e => e.Pulsdate)
-                    .HasColumnName("PULSDATE")
-                    .HasMaxLength(8)
-                    .IsFixedLength();
-
-                entity.Property(e => e.Dateno).HasColumnName("DATENO");
-            });
 
             modelBuilder.Entity<Panref>(entity =>
             {
@@ -6446,62 +6320,6 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData
                     .IsFixedLength();
             });
 
-            modelBuilder.Entity<Weightbg>(entity =>
-            {
-                entity.HasKey(e => new { e.Abogrp, e.Rhgrp, e.Gender });
-
-                entity.ToTable("WEIGHTBG");
-
-                entity.Property(e => e.Abogrp)
-                    .HasColumnName("ABOGRP")
-                    .HasMaxLength(2)
-                    .IsFixedLength();
-
-                entity.Property(e => e.Rhgrp)
-                    .HasColumnName("RHGRP")
-                    .HasMaxLength(1)
-                    .IsFixedLength();
-
-                entity.Property(e => e.Gender)
-                    .HasColumnName("GENDER")
-                    .HasMaxLength(1)
-                    .IsFixedLength();
-
-                entity.Property(e => e.Weight).HasColumnName("WEIGHT");
-            });
-
-            modelBuilder.Entity<Weightph>(entity =>
-            {
-                entity.HasKey(e => new { e.Fct126, e.Gender });
-
-                entity.ToTable("WEIGHTPH");
-
-                entity.Property(e => e.Fct126)
-                    .HasColumnName("FCT126")
-                    .HasMaxLength(6)
-                    .IsFixedLength();
-
-                entity.Property(e => e.Gender)
-                    .HasColumnName("GENDER")
-                    .HasMaxLength(1)
-                    .IsFixedLength();
-
-                entity.Property(e => e.Weight).HasColumnName("WEIGHT");
-            });
-
-            modelBuilder.Entity<Weighttm>(entity =>
-            {
-                entity.HasKey(e => e.Keyword);
-
-                entity.ToTable("WEIGHTTM");
-
-                entity.Property(e => e.Keyword)
-                    .HasColumnName("KEYWORD")
-                    .HasMaxLength(10)
-                    .IsFixedLength();
-
-                entity.Property(e => e.Weight).HasColumnName("WEIGHT");
-            });
 
             modelBuilder.Entity<Wrdmmdef>(entity =>
             {

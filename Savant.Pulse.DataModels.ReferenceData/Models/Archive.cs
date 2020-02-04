@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Archive
     {
+        [Key, Column(Order = 0)] 
         public string Keyword { get; set; }
         public string Param { get; set; }
     }
