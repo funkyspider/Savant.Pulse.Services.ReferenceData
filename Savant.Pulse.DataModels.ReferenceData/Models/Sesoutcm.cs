@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Sesoutcm
     {
+        [Key, Column(Order = 0)] 
         public string Outcmcd { get; set; }
         public string Outcmdsl { get; set; }
         public string Outcmdsd { get; set; }

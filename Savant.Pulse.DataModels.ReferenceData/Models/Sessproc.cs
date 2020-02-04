@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Sessproc
     {
+        [Key, Column(Order = 0)] 
         public string Proccode { get; set; }
         public string Procdesc { get; set; }
         public string Inuse { get; set; }

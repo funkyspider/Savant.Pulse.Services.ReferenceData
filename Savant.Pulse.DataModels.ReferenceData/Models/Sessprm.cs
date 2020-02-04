@@ -7,7 +7,9 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Sessprm
     {
+        [Key, Column(Order = 0)] 
         public string Keyword { get; set; }
+        [Key, Column(Order = 1)] 
         public int Keyid { get; set; }
         public string Ident1 { get; set; }
         public string Ident2 { get; set; }

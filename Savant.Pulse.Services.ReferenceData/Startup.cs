@@ -91,15 +91,12 @@ namespace Savant.Pulse.Services.ReferenceData
             builder.EntitySet<Addtvref>("Addtvref");
             builder.EntitySet<Adhoctpl>("Adhoctpl");
             builder.EntitySet<Archive>("Archive");
-            builder.EntitySet<Arcmodes>("Arcmodes");
             builder.EntitySet<Arcref>("Arcref");
-            builder.EntitySet<Arcvmode>("Arcvmode");
             builder.EntitySet<Attdesc>("Attdesc");
             builder.EntitySet<Audevent>("Audevent");
             builder.EntitySet<Awardcon>("Awardcon");
             builder.EntitySet<Awardpre>("Awardpre");
             builder.EntitySet<Bankhols>("Bankhols");
-            builder.EntitySet<Bchrprio>("Bchrprio");
             builder.EntitySet<Bctflag>("Bctflag");
             builder.EntitySet<Bldchrpr>("Bldchrpr");
             builder.EntitySet<Booklimt>("Booklimt");
@@ -159,8 +156,6 @@ namespace Savant.Pulse.Services.ReferenceData
             builder.EntitySet<Isoctry>("Isoctry");
             builder.EntitySet<Jobdays>("Jobdays");
             builder.EntitySet<Jobname>("Jobname");
-            builder.EntitySet<L62ref>("L62ref");
-            builder.EntitySet<L63ref>("L63ref");
             builder.EntitySet<Labelfit>("Labelfit");
             builder.EntitySet<Lbmrgrle>("Lbmrgrle");
             builder.EntitySet<Letcancd>("Letcancd");
@@ -192,7 +187,6 @@ namespace Savant.Pulse.Services.ReferenceData
             builder.EntitySet<Nmresdsp>("Nmresdsp");
             builder.EntitySet<Nonsescm>("Nonsescm");
             builder.EntitySet<Ooasuppl>("Ooasuppl");
-            builder.EntitySet<Osdate>("Osdate");
             builder.EntitySet<Panref>("Panref");
             builder.EntitySet<Pcklot>("Pcklot");
             builder.EntitySet<Pcktyp>("Pcktyp");
@@ -266,9 +260,6 @@ namespace Savant.Pulse.Services.ReferenceData
             builder.EntitySet<Vennowrk>("Vennowrk");
             builder.EntitySet<Vnctyprq>("Vnctyprq");
             builder.EntitySet<Waitprm>("Waitprm");
-            builder.EntitySet<Weightbg>("Weightbg");
-            builder.EntitySet<Weightph>("Weightph");
-            builder.EntitySet<Weighttm>("Weighttm");
             builder.EntitySet<Wrdmmdef>("Wrdmmdef");
 
         }

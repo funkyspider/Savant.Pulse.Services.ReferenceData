@@ -7,7 +7,9 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Sesfndpt
     {
+        [Key, Column(Order = 0)] 
         public int Ruleno { get; set; }
+        [Key, Column(Order = 1)] 
         public string Stype { get; set; }
         public string Menutext { get; set; }
         public string Sestat { get; set; }

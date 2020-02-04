@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Telnoref
     {
+        [Key, Column(Order = 0)] 
         public string Telnprfx { get; set; }
         public string Status { get; set; }
         public string Teltext { get; set; }

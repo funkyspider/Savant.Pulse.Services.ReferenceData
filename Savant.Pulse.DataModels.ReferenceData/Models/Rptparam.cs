@@ -7,7 +7,9 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Rptparam
     {
+        [Key, Column(Order = 0)] 
         public string Rident { get; set; }
+        [Key, Column(Order = 1)] 
         public string Sitcd { get; set; }
         public string Rdesc { get; set; }
         public string Rname { get; set; }

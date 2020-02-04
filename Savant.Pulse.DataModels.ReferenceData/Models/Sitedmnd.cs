@@ -7,10 +7,15 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Sitedmnd
     {
+        [Key, Column(Order = 0)] 
         public string Sitcd { get; set; }
+        [Key, Column(Order = 1)] 
         public string Strtdate { get; set; }
+        [Key, Column(Order = 2)] 
         public string Enddate { get; set; }
+        [Key, Column(Order = 3)] 
         public string Proccode { get; set; }
+        [Key, Column(Order = 4)] 
         public string Gender { get; set; }
         public int? Aposdmd { get; set; }
         public int? Bposdmd { get; set; }

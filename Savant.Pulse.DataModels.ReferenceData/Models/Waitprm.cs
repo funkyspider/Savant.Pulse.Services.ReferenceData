@@ -7,8 +7,11 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Waitprm
     {
+        [Key, Column(Order = 0)] 
         public string Proctype { get; set; }
+        [Key, Column(Order = 1)] 
         public int Strtday { get; set; }
+        [Key, Column(Order = 2)] 
         public int Endday { get; set; }
         public string Procord { get; set; }
         public int? Dnperslt { get; set; }

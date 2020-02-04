@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Sesscmdt
     {
+        [Key, Column(Order = 0)] 
         public string Commscd { get; set; }
         public string Isinsert { get; set; }
         public string Msgvalid { get; set; }

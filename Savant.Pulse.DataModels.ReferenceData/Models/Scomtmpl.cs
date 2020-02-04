@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Scomtmpl
     {
+        [Key, Column(Order = 0)] 
         public string Sscmtmcd { get; set; }
         public string Sscmtmds { get; set; }
         public string Inuse { get; set; }

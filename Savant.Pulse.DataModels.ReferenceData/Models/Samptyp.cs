@@ -7,6 +7,7 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Samptyp
     {
+        [Key, Column(Order = 0)] 
         public int Smpindex { get; set; }
         public string Smptypds { get; set; }
         public string Orgdonq { get; set; }

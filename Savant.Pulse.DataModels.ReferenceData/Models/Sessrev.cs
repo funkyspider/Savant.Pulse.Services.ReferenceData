@@ -7,9 +7,13 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Sessrev
     {
+        [Key, Column(Order = 0)] 
         public string Keyword { get; set; }
+        [Key, Column(Order = 1)] 
         public int Keyid { get; set; }
+        [Key, Column(Order = 2)] 
         public string Sessno { get; set; }
+        [Key, Column(Order = 3)] 
         public int Seqno { get; set; }
         public string Dateent { get; set; }
         public string Timeent { get; set; }

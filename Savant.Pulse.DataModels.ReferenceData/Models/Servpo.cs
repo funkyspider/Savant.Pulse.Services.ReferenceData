@@ -7,7 +7,9 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Servpo
     {
+        [Key, Column(Order = 0)] 
         public string Sitcd { get; set; }
+        [Key, Column(Order = 1)] 
         public string Scaleid { get; set; }
         public string Protocol { get; set; }
         public string Devind { get; set; }

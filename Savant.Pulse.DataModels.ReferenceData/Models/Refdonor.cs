@@ -7,7 +7,9 @@ namespace Savant.Pulse.DataAccessLayer.ReferenceData.Models
 {
     public partial class Refdonor
     {
+        [Key, Column(Order = 0)] 
         public string Centre { get; set; }
+        [Key, Column(Order = 1)] 
         public string Perid { get; set; }
         public string Surnm { get; set; }
         public string Inits { get; set; }
