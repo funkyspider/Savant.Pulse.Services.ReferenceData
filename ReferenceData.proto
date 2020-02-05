@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+option csharp_namespace = "Savant.Pulse.Grpc.ReferenceData";
+
+package Pulse.ReferenceData;
+
+
+service ReferenceData {
+    rpc GetSiteParameters(SiteParameterRequest) returns (SiteParameterReply);
+    rpc GetReportParameters(ReportparameterRequest) returns (ReportParameterReply);
+}
+
+
+// The request message containing the keys for selection
+message SiteParameterRequest {
+  string sitcd = 1;
+  string key1 = 2;
+  string key2 = 3;
+}
+
+// The response message containing list of site parameter items.
+message SiteParameterReply {
+    repeated SiteParameter items = 1;
+}
+
+message SiteParameter {
+    string sitcd = 1;
+    string key1 = 2;
+    string key2 = 3;
+    string param = 4;
+    string version = 5;
+    string desc = 6;
+}
+
+
+
+
+message ReportparameterRequest {
+  string rident = 1;
+  string sitcd = 2;
+}
+
+// The response message containing list of site parameter items.
+message ReportParameterReply {
+    repeated ReportParameter items = 1;
+}
+
+message ReportParameter {
+    string rident = 1;
+    string sitcd = 2;
+    string rdesc = 3;
+    string rname = 4;
+    string rtype = 5;
+    string format = 6;
+    string filenm = 7;
+    string commslnk = 8;
+}

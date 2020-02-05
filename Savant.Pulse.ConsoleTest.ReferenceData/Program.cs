@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Net.Http;
@@ -37,7 +38,7 @@ namespace Serialize.Linq.Examples.RestClient
 
             _loggingHandler = new LoggingHandler(new HttpClientHandler());
 
-            _httpClient = new HttpClient(_loggingHandler) { BaseAddress = new Uri("http://localhost:44305/") };
+            _httpClient = new HttpClient(_loggingHandler) { BaseAddress = new Uri("https://localhost:5001/") };
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(_mediaTypeJson);
 
@@ -45,6 +46,9 @@ namespace Serialize.Linq.Examples.RestClient
 
         static void Main()
         {
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
+
             RunAsync().Wait();
         }
 
@@ -55,13 +59,16 @@ namespace Serialize.Linq.Examples.RestClient
             _loggingHandler.IsLoggingEnabled = true;
             try
             {
-               // await RunAllSiteprmsAsync(cancellationToken);
-                await RunAllSiteprmsForQ04(cancellationToken);
+                StartTasks(10, cancellationToken);
+                //await LoadSessionManagementReferenceDataUsingOData(cancellationToken);
+
+                // await RunAllSiteprmsAsync(cancellationToken);
+                //await RunAllSiteprmsForQ04(cancellationToken);
                 //await RunAllSiteprmsOfAge100(cancellationToken);
                 //await RunAllMaleSiteprms(cancellationToken);
                 //await RunAllLivingSiteprms(cancellationToken);
 
-                
+
             }
             catch (Exception e)
             {
@@ -71,6 +78,100 @@ namespace Serialize.Linq.Examples.RestClient
 
             Console.ReadKey();
         }
+
+
+
+        private static void StartTasks(int taskCount, CancellationToken cancellationToken)
+        {
+
+            List<Task> taskArray = new List<Task>();
+
+            for (int i = 0; i < taskCount; i++)
+            {
+                taskArray.Add(LoadSessionManagementReferenceDataUsingOData(i, cancellationToken));
+            }
+
+            Task.WaitAll(taskArray.ToArray());
+
+            Console.WriteLine("Finished");
+            Console.ReadKey();
+
+        }
+
+
+
+        private static async Task LoadSessionManagementReferenceDataUsingOData(int i, CancellationToken cancellationToken)
+        {
+            Stopwatch st = new Stopwatch();
+
+            using (System.IO.StreamWriter file =
+                new System.IO.StreamWriter($@"C:\Temp\{i}.txt"))
+
+            {
+                file.WriteLine(DateTime.Now.ToString("hh:mm:ss.fff tt"));
+                st.Start();
+
+                HttpResponseMessage response;
+                response = await _httpClient.GetAsync("odata/siteprm?$filter=sitcd eq '**' and key1 eq 'MTHPCD63'", cancellationToken);
+                response.EnsureSuccessStatusCode();
+
+                response = await _httpClient.GetAsync("odata/mthsite", cancellationToken);
+                response.EnsureSuccessStatusCode();
+
+                response = await _httpClient.GetAsync("odata/siteprm?$filter=sitcd eq '**' and key1 eq 'SESSION'", cancellationToken);
+                response.EnsureSuccessStatusCode();
+
+                response = await _httpClient.GetAsync("odata/siteprm?$filter=sitcd eq '**' and key1 eq 'DONOR_COMMS'", cancellationToken);
+                response.EnsureSuccessStatusCode();
+
+                response = await _httpClient.GetAsync("odata/siteprm?$filter=sitcd eq 'P1' and key1 eq 'MTHPCD63'", cancellationToken);
+                response.EnsureSuccessStatusCode();
+
+                response = await _httpClient.GetAsync("odata/siteprm?$filter=sitcd eq '**' and key1 eq 'MTHPCD61'", cancellationToken);
+                response.EnsureSuccessStatusCode();
+
+                response = await _httpClient.GetAsync("odata/siteprm?$filter=sitcd eq '**' and key1 eq 'REPORTS'", cancellationToken);
+                response.EnsureSuccessStatusCode();
+
+                response = await _httpClient.GetAsync("odata/siteprm?$filter=sitcd eq '**' and key1 eq 'MTHPCD82' and key2 eq 'MRKTDEPTTEXT'", cancellationToken);
+                response.EnsureSuccessStatusCode();
+
+                response = await _httpClient.GetAsync("odata/siteprm?$filter=sitcd eq '**' and key1 eq 'MTHPCD63' and key2 eq 'SHOW_PANSUB'", cancellationToken);
+                response.EnsureSuccessStatusCode();
+
+                #region rptparam
+
+                response = await _httpClient.GetAsync("odata/rptparam?$filter=rident eq 'SESSION_TEAMREPORT' and sitcd eq '**'", cancellationToken);
+                response.EnsureSuccessStatusCode();
+
+                response = await _httpClient.GetAsync("odata/rptparam?$filter=rident eq 'SESSION_APPOINTMENTGRID' and sitcd eq '**'", cancellationToken);
+                response.EnsureSuccessStatusCode();
+
+                response = await _httpClient.GetAsync("odata/rptparam?$filter=rident eq 'SESSION_DONORAPPOINTMENTS' and sitcd eq '**'", cancellationToken);
+                response.EnsureSuccessStatusCode();
+
+                response = await _httpClient.GetAsync("odata/rptparam?$filter=rident eq 'SESSION_CANCEL_TRAN_FAILS' and sitcd eq '**'", cancellationToken);
+                response.EnsureSuccessStatusCode();
+
+                response = await _httpClient.GetAsync("odata/rptparam?$filter=rident eq 'SESSION_MANUFACTURING_DIARY' and sitcd eq '**'", cancellationToken);
+                response.EnsureSuccessStatusCode();
+
+                response = await _httpClient.GetAsync("odata/rptparam?$filter=rident eq 'SESSION_ROTAREPORT' and sitcd eq '**'", cancellationToken);
+                response.EnsureSuccessStatusCode();
+
+                response = await _httpClient.GetAsync("odata/rptparam?$filter=rident eq 'WALKIN_LIST' and sitcd eq '**'", cancellationToken);
+                response.EnsureSuccessStatusCode();
+
+                st.Stop();
+                file.WriteLine(st.Elapsed);
+                file.WriteLine(st.ElapsedMilliseconds);
+                file.Flush();
+
+                #endregion
+            }
+        }
+
+
 
         private static async Task RunAllSiteprmsAsync(CancellationToken cancellationToken)
         {
